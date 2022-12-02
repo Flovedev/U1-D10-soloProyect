@@ -19,8 +19,8 @@ ASSIGNMENT RULES
 // JS Basics
 
 function title(params) {
-    console.log(`\n----------${params}:----------\n`)
-}
+    console.log(`\n----------${params}:----------\n`);
+};
 
 /* EXERCISE A
 
@@ -32,7 +32,7 @@ title("Exercise A");
 
 let test = "stringValue"
 
-console.log(test)
+console.log(test);
 
 /* EXERCISE B
 
@@ -42,9 +42,9 @@ Create a variable called sum and assign to it the result of the sum between the 
 
 title("Exercise B");
 
-let sum = 10 + 20
+let sum = 10 + 20;
 
-console.log(sum)
+console.log(sum);
 
 /* EXERCISE C
 
@@ -54,17 +54,28 @@ Create a variable called random and assign to it a random number between 0 and 2
 
 title("Exercise C");
 
-function generateRandomInteger(max) {
-    return Math.floor(Math.random() * max) + 1;
-}
+function random020(max) {
+    return Math.floor(Math.random() * max);
+};
 
-let random = generateRandomInteger(20);
-console.log(random)
+let random = random020(20);
+console.log(random);
+
 /* EXERCISE D
 
 Create a variable called me and assign to it an object containing the following information: name = your name, surname = your surname, age = your age.
 
 */
+
+title("Exercise D");
+
+let me = {
+    name: "Florencio",
+    surname: "Villanueva",
+    age: 32
+};
+
+console.log(me);
 
 /* EXERCISE E
 
@@ -72,17 +83,37 @@ Write a piece of code for programmatically removing the age property from the pr
 
 */
 
+title("Exercise E");
+
+delete me.age;
+
+console.log(me);
+
 /* EXERCISE F
 
 Write a piece of code for programmatically adding to the me object you defined before an array called skills, containing the programming languages you know right now.
 
 */
 
+title("Exercise F");
+
+me.skills = [
+    "HTML", "CSS", "JavaScript" //HTML and CSS are markup languages, is just to add more info...
+];
+
+console.log(me);
+
 /* EXERCISE G
 
 Write a piece of code for programmatically removing the last skill from the skills array inside the me object.
 
 */
+
+title("Exercise G");
+
+me.skills.pop()
+
+console.log(me);
 
 // JS Functions
 
@@ -92,11 +123,33 @@ Write a function called dice; it should randomize an integer number between 1 an
 
 */
 
+title("Exercise 1");
+
+function dice(max) {
+    return Math.floor(Math.random() * max) + 1;
+};
+
+let diceResoult = dice(6);
+console.log(diceResoult);
+
 /* EXERCISE 2
 
 Write a function called whoIsBigger which receives 2 numbers as parameters and returns the biggest one.
 
 */
+
+title("Exercise 2");
+
+function whoIsBigger(n1, n2) {
+    if (n1 > n2) {
+        return n1
+    } else {
+        return n2
+    }
+};
+
+let exc2 = whoIsBigger(5, 9);
+console.log(exc2);
 
 /* EXERCISE 3
 
@@ -106,6 +159,16 @@ Ex.: splitMe("I love coding") => returns ["I", "Love", "Coding"]
 
 */
 
+title("Exercise 3");
+
+function splitMe(check) {
+    let split = check.split(" ");
+    return split
+}
+
+let exc3 = splitMe("I love coding");
+console.log(exc3);
+
 /* EXERCISE 4
 
 Write a function called deleteOne which receives a string and a boolean as parameters.
@@ -113,6 +176,27 @@ Write a function called deleteOne which receives a string and a boolean as param
 If the boolean value is true it should return the string without the first letter, otherwise it should remove the last one from it.
 
 */
+
+title("Exercise 4");
+
+function deleteOne(string, boolean) {
+    if (boolean === true) {
+        let split1 = string.split("")
+        split1.shift()
+        let join1 = split1.join("")
+        return join1
+    }
+    else if (boolean == false) {
+        let split2 = string.split("")
+        split2.pop()
+        let join2 = split2.join("")
+        return join2
+    }
+}
+let exc4 = deleteOne("Florencio", true)
+let exc42 = deleteOne("Florencio", false)
+console.log(exc4);
+console.log(exc42);
 
 /* EXERCISE 5
 
