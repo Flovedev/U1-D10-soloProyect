@@ -206,17 +206,44 @@ Ex.: onlyLetters("I have 4 dogs") => returns "I have dogs"
 
 */
 
+title("Exercise 5");
+
+function onlyLetters(string) {
+    let removeNum = string.replace(/[0-9]/g, '');
+    return removeNum
+}
+
+let exc5 = onlyLetters("I have 4 dogs")
+console.log(exc5);
+
 /* EXERCISE 6
 
 Write a function called isThisAnEmail which receives a string as a parameter and returns true if the string is a valid email address.
 
 */
 
+title("Exercise 6"); //I found this regex expression to match symbols like @ or .
+
+function isThisAnEmail(string) {
+    let re = /(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/;
+    return re.test(string);
+}
+
+let exc6 = isThisAnEmail("flovedev@gmail.com")
+console.log(exc6);
+
 /* EXERCISE 7
 
 Write a function called whatDayIsIt that should return the current day of the week.
 
 */
+
+title("Exercise 7");
+
+let whatDayIsIt = new Date().toLocaleString(
+    'default', { weekday: 'long' });
+
+console.log(whatDayIsIt);
 
 /* EXERCISE 8
 
@@ -238,11 +265,44 @@ values: [3, 3, 4]
 
 */
 
+title("Exercise 7");
+
+let tests = [1, 2, 3, 4, 5];
+
+function rollTheDices(number) {
+    let rolls = []
+    for (let index = 0; index < number.length; index++) {
+        let rolls = tests[index];
+        console.log(rolls)
+    }
+
+}
+
+rollTheDices(6)
+//console.log(letsRoll)
+
 /* EXERCISE 9
 
 Write a function called howManyDays which receives a date as a parameter and returns the number of days passed since that date.
 
 */
+
+title("Exercise 9");
+
+
+function howManyDays(start, end) {
+    let date1 = new Date(start);
+    let date2 = new Date(end);
+    let oneDay = 1000 * 60 * 60 * 24;
+
+    let diffInTime = date2.getTime() - date1.getTime();
+
+    let diffInDays = Math.round(diffInTime / oneDay);
+
+    return diffInDays;
+}
+let exc8 = howManyDays("1/11/2022", "2/12/2022")
+console.log(exc8);
 
 /* EXERCISE 10
 
@@ -250,11 +310,35 @@ Write a function called isTodayMyBirthday which should return true if today’s 
 
 */
 
+title("Exercise 10");
+
+function isTodayMyBirthday(date) {
+    let today = new Date();
+    let day = today.getDate();
+    let month = today.getUTCMonth() + 1;
+    let year = today.getFullYear();
+    let todays = day.toString() + month.toString() + year.toString()
+
+    let dates = date.split("/").join("");
+
+    if (todays === dates) {
+        return console.log("Is today your birthday?"), true;
+    } else {
+        return console.log("Is today your birthday?"), false;
+    }
+}
+
+let birhD = isTodayMyBirthday("2/12/2022")
+console.log(birhD);
+
+
 // JS Arrays & Objects
 
 // NOTE: the movies array used in some exercises is defined at the end of this file
 
 /* EXERCISE 11
+
+
 
 Write a function called deleteProp which receives an object and a string as parameters,
 
