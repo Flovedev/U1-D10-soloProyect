@@ -596,9 +596,10 @@ function oldestMovie(movie) {
 
     let min = Math.min(...ids);
     let string1 = min.toString()
-    let object = movie.find(obj => obj.id == string1);
-    console.log(object)
-    return string1
+
+    let find = movie.find(obj => obj.Year == string1);
+
+    return find
 }
 
 let exc12 = oldestMovie(movies)
