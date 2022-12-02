@@ -265,20 +265,9 @@ values: [3, 3, 4]
 
 */
 
-title("Exercise 7");
+title("Exercise 8");
 
-let tests = [1, 2, 3, 4, 5];
 
-function rollTheDices(number) {
-    let rolls = []
-    for (let index = 0; index < number.length; index++) {
-        let rolls = tests[index];
-        console.log(rolls)
-    }
-
-}
-
-rollTheDices(6)
 //console.log(letsRoll)
 
 /* EXERCISE 9
