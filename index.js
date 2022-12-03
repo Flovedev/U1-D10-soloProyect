@@ -129,8 +129,8 @@ function dice(max) {
     return Math.floor(Math.random() * max) + 1;
 };
 
-let diceResoult = dice(6);
-console.log(diceResoult);
+
+console.log(dice(6));
 
 /* EXERCISE 2
 
@@ -267,6 +267,20 @@ values: [3, 3, 4]
 
 title("Exercise 8");
 
+function rollTheDices(number) {
+    let arrey = [];
+    let object = { sum: 0, };
+
+    for (let index = 0; index < number; index++) {
+        arrey[index] = dice(7);
+        object.sum += arrey[index];
+    };
+    console.log("Sum:", arrey)
+
+    return console.log("Values:"), sum;
+}
+
+console.log(rollTheDices(9))
 
 //console.log(letsRoll)
 
@@ -563,11 +577,17 @@ and returns the given object after deleting its property named as the given stri
 
 title("Exercise 11");
 
-let deleteProp = movies.map(({ Poster, ...rest }) => {
-    return rest;
-});
+let exc11 = {
+    title: "Title11",
+    id: 1234,
+}
 
-console.log(deleteProp)
+function deleteProp(object, string) {
+    delete object[string];
+    console.log(object);
+}
+
+deleteProp(exc11, "id");
 
 /* EXERCISE 12
 
@@ -584,15 +604,15 @@ function oldestMovie(movie) {
     });
 
     let min = Math.min(...ids);
-    let string1 = min.toString()
+    let string1 = min.toString();
 
     let find = movie.find(obj => obj.Year == string1);
 
-    return find
+    return find;
 }
 
-let exc12 = oldestMovie(movies)
-console.log(exc12)
+let exc12 = oldestMovie(movies);
+console.log(exc12);
 
 
 /* EXERCISE 13
@@ -603,7 +623,14 @@ Write a function called countMovies which returns the number of movies contained
 
 title("Exercise 13");
 
-
+let counting = 0;
+function countMovies() {
+    for (let index = 0; index < movies.length; index++) {
+        counting++;
+    }
+    return counting;
+}
+console.log(countMovies());
 
 /* EXERCISE 14
 
@@ -611,11 +638,39 @@ Write a function called onlyTheTitles which creates an array with just the title
 
 */
 
+title("Exercise 14");
+
+function onlyTheTitles(movie) {
+    let onlyTitles = [];
+    for (let index = 0; index < movies.length; index++) {
+        onlyTitles.push(movies[index].Title);
+    }
+    movie = onlyTitles;
+    return movie;
+}
+
+console.log(onlyTheTitles());
+
 /* EXERCISE 15
 
 Write a function called onlyInThisMillennium which returns only the movies produced in this millennium from the provided movies array.
 
 */
+
+title("Exercise 15");
+
+function onlyInThisMillennium() {
+    let thisMillenium = [];
+
+    for (let index = 0; index < movies.length; index++) {
+        if (2000 > movies[index].Year) {
+            thisMillenium.push(movies[index]);
+        }
+    }
+    return thisMillenium;
+}
+
+console.log(onlyInThisMillennium());
 
 /* EXERCISE 16
 
@@ -623,17 +678,62 @@ Write a function called getMovieById which receives an id as a parameter and ret
 
 */
 
+title("Exercise 16");
+
+function getMovieById(id) {
+    let thisMovie = []
+    for (let index = 0; index < movies.length; index++) {
+        if (id === movies[index].imdbID) {
+            thisMovie.push(movies[index])
+        };
+    }
+    return thisMovie;
+}
+
+console.log(getMovieById("tt0167260"));
+
 /* EXERCISE 17
 
 Write a function called sumAllTheYears which returns the sum of all the years in which the movies in the provided movies array have been produced.
 
 */
 
+title("Exercise 17");
+
+function sumAllTheYears() {
+    let allYears = [];
+    let sum = 0;
+    for (let index = 0; index < movies.length; index++) {
+        allYears.push(movies[index]["Year"]);
+
+    }
+    for (let y = 0; y < allYears.length; y++) {
+        parse = parseInt(allYears[y]);
+        sum += parse;
+    }
+    return sum;
+}
+
+console.log(sumAllTheYears());
+
 /* EXERCISE 18
 
 Write a function called searchByTitle which receives a string as a parameter and returns all the movies in the provided movies array which contain that string in the title.
 
 */
+
+title("Exercise 18");
+
+function searchByTitle(string) {
+    let searchMovie = []
+    for (let index = 0; index < movies.length; index++) {
+        if (movies[index].Title.includes(string)) {
+            searchMovie.push(movies[index]);
+        };
+    }
+    return searchMovie;
+}
+console.log(searchByTitle("Rings"));
 
 /* EXERCISE 19
 
@@ -645,11 +745,42 @@ and another array unmatch with all the remaining ones.
 
 */
 
+title("Exercise 19");
+
+function searchAndDivide(string) {
+    let match = []
+    let unmatch = []
+
+    for (let index = 0; index < movies.length; index++) {
+        if (movies[index].Title.includes(string)) {
+            match.push(movies[index])
+        } else {
+            unmatch.push(movies[index])
+        };
+    }
+    return {
+        match, unmatch
+    }
+}
+
+console.log(searchAndDivide("Lord"));
+
 /* EXERCISE 20
 
 Write a function called "removeIndex" which receives a number as a parameter and returns the provided movies array without the element in the given position.
 
 */
+
+title("Exercise 20");
+
+function removeIndex(number) {
+    movies.splice(number)
+
+    return movies
+}
+
+
+console.log(removeIndex(12))
 
 // [EXTRAS] JS Advanced
 
@@ -669,6 +800,18 @@ halfTree(3)
 
 */
 
+title("Exercise 21");
+
+function halfTree(height) {
+    let tree = "";
+    for (let index = 0; index < height; index++) {
+        console.log(tree += "*");
+    }
+    return tree
+}
+
+halfTree(4)
+
 /* EXERCISE 22
 
 Create a function called "tree" which receives a number as a parameter and builds an "*" tree with the given height.
@@ -677,9 +820,9 @@ Example:
 
 tree(3)
 
-*
+  *
 
-***
+ ***
 
 *****
 
